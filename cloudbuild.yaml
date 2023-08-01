@@ -89,6 +89,23 @@ steps:
         echo "Branch '$BRANCH_NAME' does not represent an official environment."
         echo "*******************************************************************************"
       fi
-# [END tf-apply]      
+# [END tf-apply] 
+
+# [START tf-destroy]
+- id: 'tf destroy'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      if [ $BRANCH_NAME == 'destroy-dev' ]; then
+        cd environments/dev      
+        terraform destroy -auto-approve
+      else
+        echo "***************************** NOTHING TO DESTROY *******************************"
+        echo "Branch '$BRANCH_NAME' does not represent an environment to be destroyed."
+        echo "*******************************************************************************"
+      fi
+# [END tf-destroy] 
 options:
   logging: CLOUD_LOGGING_ONLY
