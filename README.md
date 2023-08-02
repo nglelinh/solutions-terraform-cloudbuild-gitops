@@ -16,6 +16,7 @@ terraform apply
 terraform destroy
 ```
 
+
 ## Promoting your environment to **production**
 
 Once you have tested your app (in this example an apache2 http server), you can promote your configuration to prodution. This step will:
